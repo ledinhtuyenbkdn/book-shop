@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create book</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <form th:action="@{/create-book}" th:object="${book}" th:method="post" enctype="multipart/form-data">
+                <h1>Thêm sách mới</h1>
+                <div class="form-group">
+                    <label for="title">Tiêu đề</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Tiêu đề" />
+                </div>
+                <div class="form-group">
+                    <label for="publisher">Nhà xuất bản</label>
+                    <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Nhà xuất bản" />
+                </div>
+                <div class="form-group">
+                    <label for="numPage">Số trang</label>
+                    <input type="text" class="form-control" id="numPage" name="numPage" placeholder="Số trang" />
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Tác giả</label>
+                    <select class="form-control" name="author" id="author">
+                        <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.authorName}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="multipartFile">Ảnh bìa</label>
+                    <input type="file" class="form-control" id="multipartFile" name="multipartFile" required/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br/>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('title')}">
+                    Vui lòng nhập tiêu đề
+                </div>
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('numPage')}">
+                    Vui lòng nhập đúng số trang
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

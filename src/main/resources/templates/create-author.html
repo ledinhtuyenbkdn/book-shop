@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create author</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:replace="fragments/header :: header">
+
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form th:action="@{/create-author}" th:object="${author}" th:method="post">
+                    <h1>Thêm tác giả</h1>
+                    <div class="form-group">
+                        <label for="authorName">Tên tác giả</label>
+                        <input type="text" class="form-control" id="authorName" name="authorName" placeholder="Tên tác giả"  />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <br/>
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('authorName')}">
+                        Vui lòng nhập tên tác giả
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

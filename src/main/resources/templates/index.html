@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index page</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <style>
+        a {
+            text-decoration: none !important;
+        }
+        .card {
+            transition-duration: 200ms;
+        }
+        .card:hover {
+            box-shadow: 0px 3px 5px #d63031;
+        }
+    </style>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:replace="fragments/header :: header">
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-3" th:each="book : ${books}">
+                <a th:href="@{'/books/' + ${book.id}}">
+                    <div class="card">
+                        <img class="card-img-top" th:src="${book.imageId}" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${book.title}"></h5>
+                            <p class="card-text" th:text="${book.author.authorName}"></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

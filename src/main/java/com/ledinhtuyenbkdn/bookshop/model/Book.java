@@ -19,14 +19,61 @@ public class Book {
     @NotEmpty
     private String title;
 
-    @ManyToMany(mappedBy = "books")
-    private Set<Author> authors = new HashSet<>();
-
-    @Past
-    private LocalDate publishDate;
+    @ManyToOne
+    private Author author;
 
     private String publisher;
 
     @Positive
     private Integer numPage;
+
+    private String imageId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public Integer getNumPage() {
+        return numPage;
+    }
+
+    public void setNumPage(Integer numPage) {
+        this.numPage = numPage;
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
 }

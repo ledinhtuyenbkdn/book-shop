@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}"></title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <img th:src="${book.imageId}" />
+        </div>
+        <div class="col-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Tác giả</th>
+                    <th scope="col">Nhà xuất bản</th>
+                    <th scope="col">Số trang</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.author.authorName}"></td>
+                    <td th:text="${book.publisher}"></td>
+                    <td th:text="${book.numPage}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

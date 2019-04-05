@@ -15,8 +15,7 @@ public class Author {
     @NotEmpty
     private String authorName;
 
-    @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn, inverseJoinColumns = @JoinColumn)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private Set<Book> books = new HashSet<>();
 
     public Long getId() {
@@ -33,5 +32,13 @@ public class Author {
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 }
